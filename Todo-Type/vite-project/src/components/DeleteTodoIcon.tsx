@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { NewContext } from './NewContext';
+import { useContext } from 'react';
+import { NewContext, Todo } from './NewContext';
 
-const DeleteTodoIcon = ({ todo }) => {
+const DeleteTodoIcon = ({ todo }: { todo : Todo }) => {
   const { removeTodoHandler } = useContext(NewContext);
 
   return (

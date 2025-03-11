@@ -1,15 +1,15 @@
 import { useContext, useState } from 'react';
 import EditTodoIcon from './EditTodoIcon';
 import DeleteTodoIcon from './DeleteTodoIcon';
-import { NewContext } from './NewContext';
+import { NewContext, Todo } from './NewContext';
 
-const TodoItems = ({ todo }) => {
+const TodoItems = ({ todo }: { todo: Todo }) => {
   const { changeHandler, statusHandler } = useContext(NewContext);
   const [editMode, setEditMode] = useState(false);
 
-  function closeInput(event) {
+  function closeInput(event: React.KeyboardEvent) {
     if (event.key == 'Enter') {
-      changeHandler(todo.id, event.target.value);
+      changeHandler(todo.id, (event.target as HTMLInputElement).value);
       setEditMode(false);
     }
   }
@@ -19,7 +19,7 @@ const TodoItems = ({ todo }) => {
       <li className='relative flex items-center justify-between px-2 py-6 border-b'>
         {editMode ? (
           <input
-            onKeyDown={() => {
+            onKeyDown={(event) => {
               closeInput(event);
             }}
             defaultValue={todo.name}

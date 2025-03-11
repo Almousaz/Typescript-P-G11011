@@ -1,6 +1,6 @@
 
 
-const EditTodoIcon = ({ setEditMode }) => {
+const EditTodoIcon = ({ setEditMode }:{setEditMode:(value:boolean) => void}) => {
   return (
     <div>
       <svg
