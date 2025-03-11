@@ -7,7 +7,7 @@ const TodoList = () => {
 
   return (
     <>
-      <ul className='list-reset'>
+      <ul className="list-reset">
         {todos.map((item, index) => (
           <TodoItems key={index} todo={item} />
         ))}
