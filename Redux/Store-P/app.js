@@ -1,40 +1,43 @@
-
 const store = {
-    state : {
-        cart : [] , shop : []
-    },
-    
-    getState(){
-        return this.state
-    },
+  state: {
+    cart: [],
+    shop: [],
+  },
 
-    dispatch(action){
-        if(action.type == 'Add to cart'){
+  getState() {
+    return this.state;
+  },
 
-            this.state.cart.push(action.payload)
-        }
-        else if (action.type == 'Remove from cart'){
-            this.state.cart.pop()
-        }
-    }
-    
+  dispatch(action) {
+    this.state = reducer(this.state, action);
+  },
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'Add to cart':
+      return { ...state, cart: [...state.cart, action.payload] };
+
+    case 'Remove from cart':
+      return { ...state, cart: [...state.cart.slice(1, 4)] };
+
+    default:
+      return state;
+  }
 }
 
-function addToCart(product){
-    return {type:'Add to cart' , payload: product}
+function addToCart(product) {
+  return { type: 'Add to cart', payload: product };
 }
-function removeFromCart(product){
-    return { type :'Remove from cart' ,payload : product}
+function removeFromCart(product) {
+  return { type: 'Remove from cart', payload: product };
 }
-
-
-
 
 // store.dispatch('apple')
 // store.dispatch('orange')
-store.dispatch(addToCart('tomato'))
-store.dispatch(addToCart('potato'))
-store.dispatch(addToCart('apple'))
-store.dispatch(removeFromCart('apple'))
+store.dispatch(addToCart('potato'));
+store.dispatch(addToCart('apple'));
+store.dispatch(removeFromCart('apple'));
+store.dispatch(addToCart('tomato'));
 // console.log(store.state)
-console.log(store.getState())
+console.log(store.getState());
