@@ -12,7 +12,8 @@ export const getPosts = async (
   res: Response
 ): Promise<Response> => {
   try {
-    const posts = await getPostsService();
+    const search = req.query.search as string
+    const posts = await getPostsService(search);
     return res.status(200).json(posts);
   } catch (err) {
     return res.status(400).send(err);
