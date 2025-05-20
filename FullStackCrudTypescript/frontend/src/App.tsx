@@ -1,7 +1,7 @@
-
+import Post from "./components/post";
 
 function App() {
-  return <div>hello</div>;
+  return <Post />
 }
 
 export default App;
